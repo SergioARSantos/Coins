@@ -1,18 +1,46 @@
-import pyautogui
+import pyautogui as py
 from PIL import Image
+import time
 
 # Converter Imagem para RGB.
 Image.open('popup.png').convert('RGB').save('popup.png')
 
-while True:
-
+#Procurar PopUp
+def Catch_Popup():
     try:
-        position = pyautogui.locateCenterOnScreen('popup.png')
+        print("tring....")
+        position = py.locateCenterOnScreen('popup.png')
         if position is None:
             pass
         else:
             print(position)
-            pyautogui.moveTo(position)
-            pyautogui.click(position)
+            py.moveTo(position)
+            py.click(position)
+            time.sleep(3)
+            py.keyDown('ctrl')
+            py.press('w')
+            py.keyUp('ctrl')
     except():
-        continue
+        pass
+
+
+while True:
+    count = 0
+    while count <= 3600:
+        Catch_Popup()
+        print(count)
+        time.sleep(1)
+        count = count + 1
+        if count == 3600:
+            py.press("win")
+            time.sleep(0.2)
+            py.write('Brave')
+            time.sleep(0.2)
+            py.press('Enter')
+            time.sleep(1)
+            for x in range(0, 25):
+                py.press('f5')
+                time.sleep(1)
+            py.keyDown('alt')
+            py.press('f4')
+            py.keyUp('alt')
