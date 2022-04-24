@@ -8,7 +8,6 @@ Image.open('popup.png').convert('RGB').save('popup.png')
 #Procurar PopUp
 def Catch_Popup():
     try:
-        print("tring....")
         position = py.locateCenterOnScreen('popup.png')
         if position is None:
             pass
@@ -23,15 +22,15 @@ def Catch_Popup():
     except():
         pass
 
-
+print("Searching....")
 while True:
     count = 0
-    while count <= 3600:
+    while count <= 10800:
         Catch_Popup()
-        print(count)
         time.sleep(1)
         count = count + 1
-        if count == 3600:
+        if count == 10800:
+            print(count)
             py.press("win")
             time.sleep(0.2)
             py.write('Brave')
