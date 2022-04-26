@@ -25,21 +25,24 @@ def Catch_Popup():
 print("Searching....")
 while True:
     count = 0
-    while count <= 10800:
+    while count <= 3600:
         Catch_Popup()
         time.sleep(1)
         count = count + 1
-        if count == 10800:
+        if count == 3600:
             print(count)
-            py.press("win")
-            time.sleep(0.2)
-            py.write('Brave')
-            time.sleep(0.2)
-            py.press('Enter')
-            time.sleep(1)
-            for x in range(0, 25):
-                py.press('f5')
+            try:
+                py.press("win")
+                time.sleep(0.2)
+                py.write('Brave')
+                time.sleep(0.2)
+                py.press('Enter')
                 time.sleep(1)
-            py.keyDown('alt')
-            py.press('f4')
-            py.keyUp('alt')
+                for x in range(0, 25):
+                    py.press('f5')
+                    time.sleep(1)
+                py.keyDown('alt')
+                py.press('f4')
+                py.keyUp('alt')
+            except():
+                print("Estava a mexer no PC!")
